@@ -16,7 +16,7 @@
     ansible.builtin.user:
     name: roboshop
   - name: check /app dirctory exit or not
-    ansible.builtin.state:
+    ansible.builtin.stat:
       path: /app
       register: directory
   - name: print the dirctory status
