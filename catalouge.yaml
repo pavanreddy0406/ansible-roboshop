@@ -1,31 +1,27 @@
-- name: Install catalogue component
-  hosts: catalogue
+- name: install catalouge component
+  hosts: catalouge
   become: yes
   tasks:
-  - name: setup NPM source
+  - name: setup npm source
     ansible.builtin.shell: "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
-
-  - name: Install NodeJS
+  - name: install nodejs
     ansible.builtin.yum:
       name: nodejs
       state: installed
-
-  - name: check roboshop user exist or not
+  - name: check roboshop user exit or not
     ansible.builtin.command: id roboshop
-    register: out #output is variable name
+    register: out
     ignore_errors: true
-
-  - when: out.rc != 0
-    name: create user roboshop
-    become: yes # we need sudo access for this task only
+  - when: out.rc !=0
     ansible.builtin.user:
-      name: roboshop
-
-  - name: check /app directory exists or not
-    ansible.builtin.stat:
+    name: roboshop
+  - name: check /app dirctory exit or not
+    ansible.builtin.state:
       path: /app
-    register: directory
-
-  - name: print the directory stats
+      register: directory
+  - name: print the dirctory status
     ansible.builtin.debug:
       msg: "output: {{directory}}"
+      
+
+    
