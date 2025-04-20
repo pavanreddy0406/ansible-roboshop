@@ -8,3 +8,7 @@
     ansible.builtin.yum:
       name: nodejs
       state: installed
+  - name: check roboshop user exit or not
+    ansible.builtin.command: id roboshop
+    register: out
+    
