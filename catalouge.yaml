@@ -11,4 +11,17 @@
   - name: check roboshop user exit or not
     ansible.builtin.command: id roboshop
     register: out
+    ignore_errors: true
+  - when: out.rc !=0
+    ansible.builtin.user:
+    name: roboshop
+  - name: check /app dirctory exit or not
+    ansible.builtin.state:
+      path: /app
+      register: directory
+  - name: print the dirctory status
+    ansible.builtin.debug:
+      msg: "output: {{directory}}"
+      
+
     
