@@ -1,5 +1,5 @@
 - name: Install catalogue component
-  hosts: catalouge
+  hosts: catalogue
   become: yes
   tasks:
   - name: setup NPM source
