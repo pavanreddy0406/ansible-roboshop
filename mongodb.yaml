@@ -12,15 +12,15 @@
       state: installed
   - name: start and enable mongodb
     ansible.builtin.service:
-      name: mongodb
+      name: mongod
       state: started
       enabled: yes
-  - name: enable remote connection for mongodb
+  - name: enable remote connections to mongodb
     ansible.builtin.replace:
-       path: /etc/mongod.conf
-       regexp: '127.0.0.1'
-       replace: '0.0.0.0'
+      path: /etc/mongod.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
   - name: restart mongodb
     ansible.builtin.service:
-      name: mongodb
+      name: mongod
       state: restarted
