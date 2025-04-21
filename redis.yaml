@@ -4,7 +4,7 @@
   become: yes
   tasks:
   - name: Install redis repo
-  ansible.builtin.yum:
+  ansible.builtin.command:
     name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
     state: installed
 
