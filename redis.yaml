@@ -1,4 +1,3 @@
-
 - name: Install Redis component
   hosts: redis
   become: yes
